@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-slate-50 text-slate-900 overflow-x-hidden;
+  background: radial-gradient(circle at top left, #e0e7ff 0%, #f8fafc 40%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-xl;
+}
+
+.glass-nav {
+  @apply bg-white/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm;
+}
