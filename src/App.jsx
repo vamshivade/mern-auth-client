@@ -6,7 +6,10 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminRoute from './components/AdminRoute';
 import PageTransition from './components/PageTransition';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const location = useLocation();
@@ -40,8 +43,18 @@ function App() {
               </PageTransition>
             } />
           </Route>
+
+          {/* Admin Routes */}
+          <Route element={<AdminRoute />}>
+            <Route path="/admin" element={
+              <PageTransition>
+                <AdminDashboard />
+              </PageTransition>
+            } />
+          </Route>
         </Route>
       </Routes>
+      <Toaster position="top-right" />
     </AnimatePresence>
   );
 }

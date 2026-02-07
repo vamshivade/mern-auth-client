@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LogOut, User, Home } from 'lucide-react';
+import { LogOut, User, Home, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
@@ -28,6 +28,11 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             {user ? (
               <>
+                {user.role === 'admin' && (
+                  <Link to="/admin" className="text-slate-600 hover:text-indigo-600 transition-colors flex items-center gap-1 font-medium">
+                    <Shield className="w-4 h-4" /> Admin
+                  </Link>
+                )}
                 <Link to="/dashboard" className="text-slate-600 hover:text-indigo-600 transition-colors font-medium">Dashboard</Link>
                 <Link to="/profile" className="text-slate-600 hover:text-indigo-600 transition-colors flex items-center gap-1 font-medium">
                   <User className="w-4 h-4" /> Profile

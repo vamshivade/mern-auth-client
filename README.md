@@ -1,16 +1,78 @@
-# React + Vite
+# MERN Auth Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, secure, and feature-rich React frontend for the MERN Auth Boilerplate.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentication**:
+  - User Registration & Login.
+  - JWT-based authentication with `AuthContext`.
+  - Protected Routes (`ProtectedRoute`, `AdminRoute`).
+- **Role-Based Access Control (RBAC)**:
+  - **Regular Users**: Access to personal Dashboard and Profile.
+  - **Administrators**: Exclusive access to User Management Dashboard (View, Promote, Delete users).
+- **UI/UX**:
+  - **Modern Design**: Glassmorphism effects, soft gradients, and responsive layout using Tailwind CSS.
+  - **Animations**: Smooth page transitions and interactive elements powered by `framer-motion`.
+- **Tech Stack**:
+  - React (Vite)
+  - Tailwind CSS
+  - Framer Motion
+  - React Router DOM
+  - Axios
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js (v14 or higher)
+- Backend server running (MERN Auth Server)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1.  Clone the repository:
+
+    ```bash
+    git clone https://github.com/your-username/mern-auth-client.git
+    cd mern-auth-client
+    ```
+
+2.  Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3.  Configure Environment Variables:
+    - Create a `.env` file in the root directory.
+    - Add your API URL (default is localhost or your deployed backend):
+      ```env
+      VITE_API_URL=http://localhost:5000/api
+      ```
+
+### Running the Application
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+## Project Structure
+
+- `src/components`: Reusable UI components (`Navbar`, `Layout`, `AdminRoute`, `PageTransition`).
+- `src/pages`: Application views (`Login`, `Signup`, `Dashboard`, `Profile`, `AdminDashboard`).
+- `src/context`: State management (`AuthContext`).
+- `src/services`: API integration (`api.js`, `authService.js`, `userService.js`).
+
+## Usage
+
+1.  **Register**: Create a new account.
+2.  **Login**: Access your dashboard.
+3.  **Admin Access**: If you have an admin account, click the "Admin" link in the navbar to manage users.
+
+## License
+
+MIT

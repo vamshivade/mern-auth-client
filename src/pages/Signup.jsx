@@ -3,12 +3,14 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserPlus, Mail, Lock, User } from 'lucide-react';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
+    role: 'user', // Default role
   });
   const [error, setError] = useState('');
   const { register } = useAuth();
@@ -23,9 +25,12 @@ const Signup = () => {
     setError('');
     try {
       await register(formData);
+      toast.success('Account created successfully!');
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.msg || 'Failed to register');
+      const msg = err.response?.data?.msg || 'Failed to register';
+      setError(msg);
+      toast.error(msg);
     }
   };
 

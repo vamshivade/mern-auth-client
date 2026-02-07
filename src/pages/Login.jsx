@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { LogIn, Mail, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -22,9 +23,12 @@ const Login = () => {
     setError('');
     try {
       await login(formData);
+      toast.success('Logged in successfully!');
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.msg || 'Invalid credentials');
+      const msg = err.response?.data?.msg || 'Invalid credentials';
+      setError(msg);
+      toast.error(msg);
     }
   };
 
